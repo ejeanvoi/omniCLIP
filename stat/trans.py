@@ -192,7 +192,7 @@ def FitTransistionParametersSimple(Sequences, Background, TransitionParameters, 
 
     NewTransitionParametersLogReg = SGDClassifier(loss="log", max_iter = n_iter)
     ix_shuffle = np.arange(X.shape[0])
-    for n in range(n_iter):
+    for n in range(int(n_iter)):
         np.random.shuffle(ix_shuffle)
         for batch_ix in np.array_split(ix_shuffle, 50):
             NewTransitionParametersLogReg.partial_fit(X[batch_ix,:], Y[batch_ix], classes=classes)
